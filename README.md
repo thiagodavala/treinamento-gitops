@@ -33,3 +33,36 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
 kubectl get secrets argocd-initial-admin-secret -n argocd -o json | jq -r .data.password | base64 -d
 ```
+
+## Acessar o ArgoCD
+
+```
+http://localhost:8080
+```
+
+## Criar o SSH Private Key para se conectar no repositório de infra
+
+1. Crie um chave privada/publica
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+2.  A publica configure no Azure Devops no caminho Clone Repository / SSH / Manage SSH Keys / ADD
+3.  A privada utilize no ArgoCD em Settings / Repositories / Via SSH
+
+## Crie a aplicação no ArgoCD
+
+Acesse Application / Create Application
+
+- Application name: app1
+- Project name: default
+- Source
+  - Repository URL: (busque a configuração que fez anteriormente)
+  - Path: selecione a pasta que está a aplicação no caso (app1)
+- Destination
+  - Cluster URL: https://kubernetes.default.svc
+  - Namespace: default
+    
+Create!
+
+Clique na opção "Sync"
