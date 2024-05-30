@@ -4,6 +4,7 @@
 
 - Instalar o Minikube ou Kind
 - Instalar o jq no terminal
+- Helm para criar um chart
 
 ## Inicializar o Minikube
 
