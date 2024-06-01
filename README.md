@@ -71,7 +71,8 @@ Clique na opção "Sync"
 
 ## Sonarqube
 
-``
+```
+
 version: "3"
 
 services:
@@ -104,4 +105,5 @@ volumes:
   sonarqube_logs:
   postgresql:
   postgresql_data:
+
 ```
